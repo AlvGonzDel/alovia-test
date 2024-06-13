@@ -40,7 +40,10 @@ export class HeroesFormComponent implements OnInit, OnDestroy {
 
   public heroForm: FormGroup = this.fb.group({
     name: [this.heroToEdit()?.name ?? '', Validators.required],
-    heroName: [this.heroToEdit()?.heroName ?? '', Validators.required],
+    heroName: [
+      this.titlecasePipe.transform(this.heroToEdit()?.heroName) ?? '',
+      Validators.required,
+    ],
     year: [this.heroToEdit()?.year ?? '', Validators.required],
     location: [this.heroToEdit()?.location ?? '', Validators.required],
     group: [this.heroToEdit()?.group ?? '', Validators.required],

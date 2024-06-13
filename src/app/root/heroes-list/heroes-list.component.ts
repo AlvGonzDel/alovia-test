@@ -78,7 +78,7 @@ export class HeroesListComponent implements OnInit, OnDestroy {
 
     this.heroesManagementService
       .getHeroes()
-      .pipe(take(1), delay(1000))
+      .pipe(take(1), delay(500))
       .subscribe({
         next: (heroes: Hero[]) => {
           if (!heroes?.length) return;

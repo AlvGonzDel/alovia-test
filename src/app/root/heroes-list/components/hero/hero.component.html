@@ -1,25 +1,26 @@
+@if (hero) {
 <mat-card>
   <mat-card-header
-    ><h2 class="title">{{ hero.heroName | titlecase }}</h2>
+    ><h2 class="title" data-test="heroName">{{ hero.heroName | titlecase }}</h2>
   </mat-card-header>
   <mat-card-content class="hero-container">
     <div class="image-container">
       <img class="image" [src]="hero.image" alt="hero" />
     </div>
     <div class="hero-properties">
-      <div class="property">
+      <div data-test="name" class="property">
         <p class="property-title">Name:</p>
         <p>{{ hero.name | titlecase }}</p>
       </div>
-      <div class="property">
+      <div data-test="group" class="property">
         <p class="property-title">Group:</p>
         <p>{{ hero.group }}</p>
       </div>
-      <div class="property">
+      <div data-test="year" class="property">
         <p class="property-title">Year:</p>
         <p>{{ hero.year }}</p>
       </div>
-      <div class="property">
+      <div data-test="location" class="property">
         <p class="property-title">Location:</p>
         <p>{{ hero.location }}</p>
       </div>
@@ -47,3 +48,4 @@
     </button>
   </div>
 </mat-card>
+}

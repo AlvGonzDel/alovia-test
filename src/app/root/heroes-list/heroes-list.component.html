@@ -10,6 +10,7 @@
     mat-raised-button
     matTooltip="Create new hero"
     matTooltipPosition="below"
+    data-test="new-hero"
     (click)="navigateToCreation()"
   >
     Create new hero
@@ -20,7 +21,7 @@
   <div class="heroes-container">
     @if (filterText.value ? filteredHeroes.length : allHeroes.length) { @for
     (hero of filterText.value ? filteredHeroes : allHeroes; track hero.id) {
-    <div class="hero-item">
+    <div class="hero-item" data-test="hero">
       <app-hero
         class="hero-item"
         (getHeroes)="getHeroes()"
@@ -28,7 +29,7 @@
       ></app-hero>
     </div>
     } }@else if(!isLoading){
-    <h5>
+    <h5 data-test="no-data">
       {{
         filterText.value
           ? "There are no heroes that include " + filterText.value
@@ -40,6 +41,7 @@
 </div>
 
 <ngx-spinner
+  data-test="spinner"
   [bdColor]="fullScreenConfig.bdColor"
   size="medium"
   [color]="fullScreenConfig.color"

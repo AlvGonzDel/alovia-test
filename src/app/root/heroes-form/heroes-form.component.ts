@@ -11,7 +11,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
-import { take } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 import { SnackbarTypes } from '../../core/enums/snackbar-type.enum';
 import { Hero } from '../../core/interfaces/hero.interface';
 import { SnackbarData } from '../../core/interfaces/snackbar-data.interface';
@@ -49,6 +49,9 @@ export class HeroesFormComponent implements OnInit, OnDestroy {
 
   public allHeroes: Hero[];
   public isEditing: boolean;
+
+  private destroy$ = new Subject<void>();
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -62,16 +65,8 @@ export class HeroesFormComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.heroesManagementService
-      .getHeroes()
-      .pipe(take(1))
-      .subscribe({
-        next: (heroes: Hero[]) => {
-          if (!heroes.length) return;
-
-          this.allHeroes = heroes;
-        },
-      });
+    this.subForm();
+    this.getHeroes();
   }
 
   public submitHero(): void {
@@ -97,6 +92,34 @@ export class HeroesFormComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.heroesManagementService.heroToEdit$();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  private getHeroes(): void {
+    this.heroesManagementService
+      .getHeroes()
+      .pipe(take(1))
+      .subscribe({
+        next: (heroes: Hero[]) => {
+          if (!heroes.length) return;
+
+          this.allHeroes = heroes;
+        },
+      });
+  }
+
+  private subForm(): void {
+    this.heroForm
+      .get('heroName')
+      ?.valueChanges.pipe(takeUntil(this.destroy$))
+      .subscribe((heroName: string) => {
+        this.heroForm
+          .get('heroName')
+          ?.setValue(this.titlecasePipe.transform(heroName), {
+            emitEvent: false,
+          });
+      });
   }
 
   private addHeroToList(): void {

@@ -7,33 +7,33 @@ import { HeroesMock } from '../mocks/heroes-mock';
   providedIn: 'root',
 })
 export class HeroesManagementService {
-  private _heroes = signal<Hero[]>(HeroesMock);
-  public heroes: Signal<Hero[]> = this._heroes.asReadonly();
+  public heroes: Hero[] = HeroesMock;
 
   private _heroeToEdit = signal<Hero | null>(null);
   public heroToEdit: Signal<Hero | null> = this._heroeToEdit.asReadonly();
 
   public heroes$(hero: Hero, isDeleting?: boolean): void {
-    let heroes: Hero[] = this.heroes();
-    const heroIndex: number = heroes.findIndex(
+    let currentHeroes: Hero[] = this.heroes;
+
+    const heroIndex: number = currentHeroes.findIndex(
       (currentHero: Hero) => hero.id === currentHero.id
     );
 
     if (isDeleting) {
-      heroes = heroes.filter(
+      currentHeroes = currentHeroes.filter(
         (currentHero: Hero) => hero.heroName !== currentHero.heroName
       );
     } else if (heroIndex !== -1) {
-      heroes[heroIndex] = hero;
+      currentHeroes[heroIndex] = hero;
     } else {
-      heroes = [...heroes, hero];
+      currentHeroes = [...currentHeroes, hero];
     }
 
-    this._heroes.set(heroes);
+    this.heroes = currentHeroes;
   }
 
   public getHeroes(): Observable<Hero[]> {
-    return of(this.heroes());
+    return of(this.heroes);
   }
 
   public heroToEdit$(hero?: Hero) {

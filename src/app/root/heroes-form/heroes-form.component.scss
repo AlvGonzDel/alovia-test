@@ -1,0 +1,48 @@
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.hero-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.hero-form-field {
+  margin: 10px 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.form-submit {
+  width: 50%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.disabled-button {
+  background-color: rgb(199, 199, 199);
+}
+
+.back-button {
+  font-size: 20px;
+  position: absolute;
+  top: 30px;
+  right: 25px;
+}
+
+mat-card {
+  padding: 20px;
+  margin-top: 20px;
+  width: 50%;
+}

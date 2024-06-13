@@ -1,7 +1,9 @@
 export interface Hero {
   name: string;
   heroName: string;
-  superpowers: string[];
+  year: number;
   location: string;
+  group: string;
   image: string;
+  id: number;
 }

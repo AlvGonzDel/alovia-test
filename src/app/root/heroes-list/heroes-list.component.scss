@@ -1,0 +1,23 @@
+.heroes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.hero-item {
+  flex: 0 0 45%;
+  max-width: 45%;
+}
+
+.form {
+  padding: 30px 0 30px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.searcher {
+  width: 30%;
+}

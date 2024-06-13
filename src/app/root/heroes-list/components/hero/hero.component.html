@@ -1,0 +1,49 @@
+<mat-card>
+  <mat-card-header
+    ><h2 class="title">{{ hero.heroName | titlecase }}</h2>
+  </mat-card-header>
+  <mat-card-content class="hero-container">
+    <div class="image-container">
+      <img class="image" [src]="hero.image" alt="hero" />
+    </div>
+    <div class="hero-properties">
+      <div class="property">
+        <p class="property-title">Name:</p>
+        <p>{{ hero.name | titlecase }}</p>
+      </div>
+      <div class="property">
+        <p class="property-title">Group:</p>
+        <p>{{ hero.group }}</p>
+      </div>
+      <div class="property">
+        <p class="property-title">Year:</p>
+        <p>{{ hero.year }}</p>
+      </div>
+      <div class="property">
+        <p class="property-title">Location:</p>
+        <p>{{ hero.location }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <div class="options-container">
+    <button
+      class="button button--option"
+      mat-raised-button
+      matTooltip="Edit hero"
+      matTooltipPosition="below"
+      (click)="editHero()"
+    >
+      <i class="fa-solid fa-pen-to-square"></i>
+    </button>
+    <button
+      class="button button--option"
+      mat-raised-button
+      matTooltip="Delete hero"
+      matTooltipPosition="below"
+      (click)="deleteHero()"
+    >
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </div>
+</mat-card>

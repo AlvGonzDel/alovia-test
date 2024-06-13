@@ -1,0 +1,32 @@
+.button {
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  max-height: 56px;
+
+  &--option {
+    background-color: transparent;
+  }
+
+  &--confirm {
+    background-color: lightblue;
+  }
+
+  &--delete {
+    background-color: lightcoral;
+  }
+}
+
+.error-snackbar {
+  background-color: lightcoral;
+}
+
+.success-snackbar {
+  background-color: rgb(1, 117, 1);
+}

@@ -1,1 +1,48 @@
-<p>heroes-list works!</p>
+<form [formGroup]="heroesFilterForm" class="form">
+  <mat-form-field class="searcher">
+    <mat-label>Filter heroes</mat-label>
+    <input formControlName="filterText" matInput />
+  </mat-form-field>
+
+  <button
+    class="button button--confirm"
+    mat-raised-button
+    matTooltip="Create new hero"
+    matTooltipPosition="below"
+    (click)="navigateToCreation()"
+  >
+    Create new hero
+  </button>
+</form>
+
+<div class="main-container">
+  <div class="heroes-container">
+    @if (filterText.value ? filteredHeroes.length : allHeroes.length) { @for
+    (hero of filterText.value ? filteredHeroes : allHeroes; track hero.id) {
+    <div class="hero-item">
+      <app-hero
+        class="hero-item"
+        (getHeroes)="getHeroes()"
+        [hero]="hero"
+      ></app-hero>
+    </div>
+    } }@else if(!isLoading){
+    <h5>
+      {{
+        filterText.value
+          ? "There are no heroes that include " + filterText.value
+          : "There are currently no heroes, please, add one"
+      }}
+    </h5>
+    }
+  </div>
+</div>
+
+<ngx-spinner
+  [bdColor]="fullScreenConfig.bdColor"
+  size="medium"
+  [color]="fullScreenConfig.color"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+</ngx-spinner>

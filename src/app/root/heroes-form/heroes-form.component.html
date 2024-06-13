@@ -1,7 +1,9 @@
 <div class="main-container">
   <mat-card>
     <mat-card-header class="header">
-      <mat-card-title><h5>Add Hero</h5></mat-card-title>
+      <mat-card-title
+        ><h5>{{ isEditing ? "Edit hero" : "Add hero" }}</h5></mat-card-title
+      >
     </mat-card-header>
     <mat-card-content>
       <form [formGroup]="heroForm" (ngSubmit)="submitHero()" class="hero-form">

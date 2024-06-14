@@ -19,18 +19,18 @@
   </button>
 </form>
 
-<div class="heroes-container container">
+<div class="heroes-container">
   @if (filterText.value ? filteredHeroes.length : allHeroes.length) { @for (hero
   of filterText.value ? filteredHeroes : allHeroes; track hero.id) {
-  <div class="hero-item column">
+  <div data-test="hero" class="hero-item">
     <app-hero
-      class="hero-item item"
+      class="hero-item"
       (getHeroes)="getHeroes()"
       [hero]="hero"
     ></app-hero>
   </div>
   } }@else if(!isLoading){
-  <h5 data-test="no-data" class="item">
+  <h5 data-test="no-data">
     {{
       filterText.value
         ? "There are no heroes that include " + filterText.value

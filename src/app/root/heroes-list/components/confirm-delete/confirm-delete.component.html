@@ -1,24 +1,26 @@
 <div class="confirm-delete-container">
   <h6>
-    Are you sure you want to delete {{ currentHero.heroName | titlecase }}
+    Are you sure you want to delete {{ currentHero.heroName | titlecase }}?
   </h6>
 
   <div class="button-container">
     <button
-      class="button button--delete"
+      class="button button--cancel hovered-cancel-button"
       mat-raised-button
-      matTooltip="Delete hero"
+      matTooltip="Cancel"
       matTooltipPosition="below"
+      matTooltipShowDelay="1000"
       (click)="deleteHero(false)"
     >
       Cancel
     </button>
 
     <button
-      class="button button--confirm"
+      class="button button--confirm button--confirm--half-size"
       mat-raised-button
-      matTooltip="Delete hero"
+      matTooltip="Confirm delete"
       matTooltipPosition="below"
+      matTooltipShowDelay="1000"
       (click)="deleteHero(true)"
     >
       Confirm

@@ -5,10 +5,22 @@
   height: 100vh;
 }
 
+.title-container {
+  width: 100%;
+  background-color: #d6d6d6;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 12px 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero-form {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  padding: 20px;
 }
 
 .hero-form-field {
@@ -17,11 +29,8 @@
 
 .button-container {
   display: flex;
-  justify-content: center;
-}
-
-.form-submit {
-  width: 50%;
+  margin-top: 20px;
+  justify-content: space-between;
 }
 
 .header {
@@ -34,15 +43,10 @@
   background-color: rgb(199, 199, 199);
 }
 
-.back-button {
-  font-size: 20px;
-  position: absolute;
-  top: 30px;
-  right: 25px;
+.title {
+  font-weight: bold;
 }
 
 mat-card {
-  padding: 20px;
-  margin-top: 20px;
   width: 50%;
 }

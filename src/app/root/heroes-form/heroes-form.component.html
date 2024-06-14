@@ -1,9 +1,9 @@
 <div class="main-container">
   <mat-card>
-    <mat-card-header class="header">
-      <mat-card-title
-        ><h5>{{ isEditing ? "Edit hero" : "Add hero" }}</h5></mat-card-title
-      >
+    <mat-card-header class="title-container">
+      <h5 class="title">
+        {{ isEditing ? "Edit hero" : "Add hero" }}
+      </h5>
     </mat-card-header>
     <mat-card-content>
       <form [formGroup]="heroForm" (ngSubmit)="submitHero()" class="hero-form">
@@ -39,12 +39,25 @@
 
         <div class="button-container">
           <button
+            mat-raised-button
+            matTooltip="Cancel"
+            matTooltipPosition="below"
+            matTooltipShowDelay="1000"
+            class="button button--cancel hovered-cancel-button"
+            type="button"
+            (click)="goBack()"
+          >
+            Cancel
+          </button>
+
+          <button
             [disabled]="!heroForm.valid"
-            [class.disabled-button]="!heroForm.valid"
+            [ngClass]="[!heroForm.valid ? 'disabled-button' : '']"
             mat-raised-button
             matTooltip="Confirm"
             matTooltipPosition="below"
-            class="button button--confirm form-submit"
+            matTooltipShowDelay="1000"
+            class="button button--confirm button--confirm--half-size"
             type="submit"
           >
             Submit
@@ -52,15 +65,5 @@
         </div>
       </form>
     </mat-card-content>
-
-    <button
-      class="button button--option back-button"
-      mat-raised-button
-      matTooltip="Leave"
-      matTooltipPosition="below"
-      (click)="goBack()"
-    >
-      <i class="fa-solid fa-right-to-bracket"></i>
-    </button>
   </mat-card>
 </div>

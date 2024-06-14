@@ -1,4 +1,4 @@
-import { TitleCasePipe } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit, Signal, effect } from '@angular/core';
 import {
   FormBuilder,
@@ -29,6 +29,7 @@ import { SnackbarService } from '../../core/services/snackbar.service';
     MatCardModule,
     MatTooltipModule,
     TitleCasePipe,
+    CommonModule,
   ],
   templateUrl: './heroes-form.component.html',
   styleUrl: './heroes-form.component.scss',

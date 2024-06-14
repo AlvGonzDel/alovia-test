@@ -5,39 +5,39 @@
   </mat-form-field>
 
   <button
-    class="button button--confirm"
+    class="button button--confirm add-hero"
     type="button"
     mat-raised-button
     matTooltip="Create new hero"
     matTooltipPosition="below"
+    matTooltipShowDelay="1000"
     data-test="new-hero"
     (click)="navigateToCreation()"
   >
-    Create new hero
+    <i class="fa-solid fa-plus"></i>
+    <p>Create new hero</p>
   </button>
 </form>
 
-<div class="main-container">
-  <div class="heroes-container">
-    @if (filterText.value ? filteredHeroes.length : allHeroes.length) { @for
-    (hero of filterText.value ? filteredHeroes : allHeroes; track hero.id) {
-    <div class="hero-item" data-test="hero">
-      <app-hero
-        class="hero-item"
-        (getHeroes)="getHeroes()"
-        [hero]="hero"
-      ></app-hero>
-    </div>
-    } }@else if(!isLoading){
-    <h5 data-test="no-data">
-      {{
-        filterText.value
-          ? "There are no heroes that include " + filterText.value
-          : "There are currently no heroes, please, add one"
-      }}
-    </h5>
-    }
+<div class="heroes-container container">
+  @if (filterText.value ? filteredHeroes.length : allHeroes.length) { @for (hero
+  of filterText.value ? filteredHeroes : allHeroes; track hero.id) {
+  <div class="hero-item column">
+    <app-hero
+      class="hero-item item"
+      (getHeroes)="getHeroes()"
+      [hero]="hero"
+    ></app-hero>
   </div>
+  } }@else if(!isLoading){
+  <h5 data-test="no-data" class="item">
+    {{
+      filterText.value
+        ? "There are no heroes that include " + filterText.value
+        : "There are currently no heroes, please, add one"
+    }}
+  </h5>
+  }
 </div>
 
 <ngx-spinner

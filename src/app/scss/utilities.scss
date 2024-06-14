@@ -1,14 +1,14 @@
 .button {
   border-radius: 8px;
   border-width: 0;
-  color: #333333;
   cursor: pointer;
   display: inline-block;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
   margin: 0;
-  padding: 10px 12px;
+  padding: 12px 16px;
   text-align: center;
-  max-height: 56px;
+  height: 56px;
 
   &--option {
     background-color: transparent;
@@ -16,11 +16,23 @@
 
   &--confirm {
     background-color: lightblue;
+
+    &--half-size {
+      width: 50%;
+    }
   }
 
   &--delete {
     background-color: lightcoral;
   }
+
+  &--cancel {
+    background-color: transparent;
+  }
+}
+
+.hovered-cancel-button:hover {
+  background-color: #f5f5f5;
 }
 
 .error-snackbar {
